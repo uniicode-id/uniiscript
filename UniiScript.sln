@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler", "Compiler\Compiler.csproj", "{584DB1BB-F820-4D82-B408-5E7DFE121977}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unii.Compile", "Unii.Compile\Unii.Compile.csproj", "{7A29D40D-129C-455D-8054-6322C7DE2DA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unii.Error", "Unii.Error\Unii.Error.csproj", "{A653AB8D-4415-405F-9930-B3EC2EEE9EF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unii.Scan", "Unii.Scan\Unii.Scan.csproj", "{16E09855-FC12-4990-ADEB-EDAA3377D72C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{584DB1BB-F820-4D82-B408-5E7DFE121977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{584DB1BB-F820-4D82-B408-5E7DFE121977}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{584DB1BB-F820-4D82-B408-5E7DFE121977}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{584DB1BB-F820-4D82-B408-5E7DFE121977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A29D40D-129C-455D-8054-6322C7DE2DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A29D40D-129C-455D-8054-6322C7DE2DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A29D40D-129C-455D-8054-6322C7DE2DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A29D40D-129C-455D-8054-6322C7DE2DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A653AB8D-4415-405F-9930-B3EC2EEE9EF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A653AB8D-4415-405F-9930-B3EC2EEE9EF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A653AB8D-4415-405F-9930-B3EC2EEE9EF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A653AB8D-4415-405F-9930-B3EC2EEE9EF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E09855-FC12-4990-ADEB-EDAA3377D72C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E09855-FC12-4990-ADEB-EDAA3377D72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E09855-FC12-4990-ADEB-EDAA3377D72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E09855-FC12-4990-ADEB-EDAA3377D72C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

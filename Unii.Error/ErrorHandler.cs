@@ -1,37 +1,26 @@
-﻿namespace Compiler;
+﻿using JetBrains.Annotations;
 
-public class ErrorCompiler
-{
-    public readonly string Message;
-    public readonly int Line;
-    public readonly int Column;
-    
-    public ErrorCompiler(string message, int line, int column)
-    {
-        Message = message;
-        Line = line;
-        Column = column;
-    }
-}
+namespace Unii.Error;
 
+[PublicAPI]
 public class ErrorHandler
 {
-    private readonly List<ErrorCompiler> _errors = new();
+    private readonly List<CompileError> _errors = new();
     
-    public int PushError(ErrorCompiler error)
+    public int PushError(CompileError error)
     {
         _errors.Add(error);
         return _errors.Count - 1;
     }
     
-    public ErrorCompiler PopError()
+    public CompileError PopError()
     {
         var error = _errors[^1];
         _errors.RemoveAt(_errors.Count - 1);
         return error;
     }
     
-    public ErrorCompiler GetError(int index)
+    public CompileError GetError(int index)
     {
         return _errors[index];
     }

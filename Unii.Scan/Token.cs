@@ -1,5 +1,8 @@
-﻿namespace Compiler.Scanning;
+﻿using JetBrains.Annotations;
 
+namespace Unii.Scan;
+
+[PublicAPI]
 public class Token
 {
     public TokenType Type { get; }

@@ -1,8 +1,12 @@
-﻿namespace Compiler.Scanning;
+﻿using JetBrains.Annotations;
+using Unii.Error;
 
+namespace Unii.Scan;
+
+[PublicAPI]
 public class Scanner
 {
-    private static readonly Dictionary<string, TokenType> keywords = new Dictionary<string, TokenType>
+    private static readonly Dictionary<string, TokenType> Keywords = new()
     {
         { "true", TokenType.True },
         { "false", TokenType.False },
@@ -15,8 +19,8 @@ public class Scanner
     private readonly ErrorHandler _errorHandler;
     private readonly List<Token> _tokens = new();
 
-    private int _start = 0;
-    private int _current = 0;
+    private int _start;
+    private int _current;
     private int _line = 1;
 
     public Scanner(string src, ErrorHandler errorHandler)
@@ -46,8 +50,7 @@ public class Scanner
     
     private char Peek(int offset = 0)
     {
-        if (_current + offset >= _src.Length) return '\0';
-        return _src[_current + offset];
+        return _current + offset >= _src.Length ? '\0' : _src[_current + offset];
     }
     
     private Token AddToken(TokenType type)
@@ -68,7 +71,7 @@ public class Scanner
 
         if (IsAtEnd())
         {
-            _errorHandler.PushError(new ErrorCompiler("Unterminated string", _line, _start));
+            _errorHandler.PushError(new CompileError("Unterminated string", _line, _start));
             return;
         }
 
@@ -122,7 +125,7 @@ public class Scanner
                     }
                     if (IsAtEnd())
                     {
-                        _errorHandler.PushError(new ErrorCompiler("Unterminated comment", _line, _start));
+                        _errorHandler.PushError(new CompileError("Unterminated comment", _line, _start));
                         return;
                     }
                     Advance();
@@ -228,7 +231,7 @@ public class Scanner
                 Advance();
                 if (Peek() != '\'')
                 {
-                    _errorHandler.PushError(new ErrorCompiler("Expected closing single quote", _line, _start));
+                    _errorHandler.PushError(new CompileError("Expected closing single quote", _line, _start));
                     return;
                 }
                 Advance();
@@ -251,9 +254,9 @@ public class Scanner
                 {
                     while (char.IsLetterOrDigit(Peek()) || Peek() == '_') Advance();
                     var text = _src[_start.._current];
-                    AddToken(keywords.TryGetValue(text, out var keyword) ? keyword : TokenType.Identifier);
+                    AddToken(Keywords.TryGetValue(text, out var keyword) ? keyword : TokenType.Identifier);
                 }
-                else _errorHandler.PushError(new ErrorCompiler($"Unexpected character '{c}'", _line, _start));
+                else _errorHandler.PushError(new CompileError($"Unexpected character '{c}'", _line, _start));
                 break;
         }
     }
