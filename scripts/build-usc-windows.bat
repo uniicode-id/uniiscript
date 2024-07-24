@@ -1,0 +1,1 @@
+go build -C cmd/usc -o ../../bin/usc.exe
